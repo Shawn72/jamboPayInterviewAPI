@@ -1,40 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Data;
 using System.Web.Http;
+using MySql.Data.MySqlClient;
 
 namespace JamboPay_Api.Controllers
 {
-    [Authorize]
+    [BasicAuthentication]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        public static readonly string ConString = @"datasource=localhost;port=3306;username=root;password=root;database=jambopay";
+        [Route("api/Values")]
+
+        [HttpGet]
+        [Route("api/GetPostedTransactions")]
+        public IHttpActionResult GetPostedTransactions()
         {
-            return new string[] { "value1", "value2" };
+            using (MySqlConnection con = new MySqlConnection(ConString))
+            {
+                con.Open();
+                string selectQuery = "SELECT * FROM transactions";
+                MySqlCommand command0 = new MySqlCommand(selectQuery, con);
+                command0.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(command0);
+                da.Fill(dt);
+                con.Close();
+                return Json(dt);                
+
+            }
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        [HttpGet]
+        [Route("api/GetSupporters")]
+        public IHttpActionResult GetSupporters()
         {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+            using (MySqlConnection con = new MySqlConnection(ConString))
+            {
+                con.Open();
+                string selectQuery = "SELECT * FROM supporters";
+                MySqlCommand command0 = new MySqlCommand(selectQuery, con);
+                command0.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(command0);
+                da.Fill(dt);
+                con.Close();
+                return Json(dt);
+            }
         }
     }
 }
