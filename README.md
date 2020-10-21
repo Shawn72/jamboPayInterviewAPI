@@ -8,7 +8,7 @@ IDE Used :
 VS2015 Community Edition
 
 Technologies Used:
-1. ASP.NET MVC
+1. ASP.NET C#
 2. MySQL Database
 
 Package Contains:
