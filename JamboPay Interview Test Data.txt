@@ -1,0 +1,46 @@
+Ambassador Add Test Data
+{
+    "FName": "Shawn",
+    "LName": "Andre",
+    "Phonenumber": "0731628560",
+    "IdNumber": "29501445",
+    "Email":"seanandre30@gmail.com",
+    "Password1":"1234",
+    "Password2":"1234"
+}
+
+
+Supporter Add Test Data
+{
+    	"FName": "Shawn_Supporter",
+    	"LName": "Andre_Supporter",
+    	"Phonenumber": "0731628560",
+    	"IdNumber": "29501448",
+    	"Email":"supporterandre31@gmail.com",
+	"AmbassadorEmail": "seanandre30@gmail",
+        "Password1":"1234",
+    	"Password2":"1234"
+}
+
+Services Add Test Data
+{
+    	"ServiceName": "Electricity",
+    	"ServiceCode": "ELTR",
+    	"ServiceCommisionPercent": 2
+}
+
+
+Post Transaction Test Data
+{
+    	"SupporterEmail": "supporterandre31@gmail.com",
+    	"ServiceTypeCode": "H20",
+    	"ServiceFee": 300
+}
+
+
+Get Ambassador Commission Balance Test Data
+{
+    	"AmbassadorEmail": "seanandre30@gmail"
+}
+
+
